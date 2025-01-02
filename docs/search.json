@@ -2,42 +2,42 @@
   {
     "objectID": "posts/who-am-i/index.html",
     "href": "posts/who-am-i/index.html",
-    "title": "Who am I?",
+    "title": "FIMS Timeline",
     "section": "",
-    "text": "Lecturer in Health Data Science \nJoined CHICAS in April 2023, after working in data science consultancy and doing a PhD in Statistics and Operational Research.\n\n\n\n\n\nCollaborating with local NHS Trusts \non data science and data engineering projects, making use of routinely collected healthcare data to improve health outcomes.\n\n\n\n\n\nPromoting statistics as a tool for improvement \nby developing novel methodology to solve problems, working with local schools to encourage young people to choose careers in data, and researching more effective ways of teaching statistics.\n\n\n\n\n\nBuilding and teaching open source software \nsuch as R and Python, to improve research reproducibility and building communities to develop skills, especially in under-represented groups.\n\n\n\n\n\nCommunicating data more effectively \nby developing Best Practices for Data Visualisation guidance for Royal Statistical Society publications, and helping authors to implement best practices.\n\n\n\n\n\n nrennie.rbind.io\n\n nicola-rennie\n\n nrennie"
+    "text": "Kelli F. Johnson Office of Science & Technology\nWithin our team we have so much expertise in\n\nTemplate Model Builder (TMB)\nR\nC++\ngit\nGitHub actions\nlife history\nfishery\nstatistics\nStan\nGaussian Markov random fields\neconomics\nmulti-species models\n\nIt is amazing. For example, when I started with FIMS I did not know C++ at all. Now, I can at least pattern match. Additionally, I had never used Stan but others had. It is great to be on a team with so much knowledge.\n\n\n\n\n\n\nProject Lead of FIMS \nAs an assessment scientist at the Northwest Fisheries Science Center, I authored assessments for sablefish, lingcod, and Pacific Hake. At the core, I love reproducible research and anything related to making other people’s jobs easier. \nIn 2021 I was asked to be one of the NWFSC representatives for FIMS. And, in June of 2024 I started a detail as the FIMS Project Lead. I love it and I applied for the permanent position, which started in November of 2024. I, and many others, are committed to bringing the Science Centers together with a common framework.\n\n\n\n\n\nBackbone of FIMS is C++ \n\nC++ is used to code the modules, e.g., struct LogisticMaturity : public\nR is used to parameterize a model, e.g., create_default_*(), initialize_*()\nTemplate Model Builder (TMB) is used to fit data to a model\nstats::nlminb() is used to estimate the parameters\nR is used to post-process the results, e.g., ggplot2::ggplot()\n\n\n\n\n\n\nIf I have seen further, it is by standing on the shoulders of giants.  – Sir Isaac Newton\n\n\n\n\n\nA timeline using git commits and tags.\n\n\n\n\n\n\n\nThe start of an age-structured assessment model began with version 0.1.0.0. Major milestones for this release included the following:\n\nC++ code to to build the necessary modules\nthe use of a single data frame to store all model data\nrigorous testing suite using google tests and {testthat}\n\n\n\n\n\n\n\n\n\nCreated the fims::Vector class in C++. \nTesting and the amount of code that those tests cover is extremely important to the Implementation Team. Code coverage is formally calculated using a GitHub action and each commit is compared to the previous commit to ensure code coverage does not significantly drop.\n\n\n\n\n\n\n\n\nThe latest release (TODAY).\n\nFits to length data using an age-to-length-conversion matrix, data1 includes the necessary information needed to fit to both ages and lengths.\nAdds C++ ParameterVector to allow for the estimation of time-varying parameters.\nImplements R wrapper functions to facilitate\n\ncreating the input model specifications with create_default_*(), update_parameters(), and initialize_*();\nadding -999 to the missing fleet, year, age, length, etc. combinations;\nrunning the model with a user-supplied argument of n_of_loops, where the default is three, to restart the optimizer from the previous run of nlmimb;\nsummarizing the output with the FIMSFit() function and class.\n\nImplements a switch for global verbosity within FIMS through the use of {cli} messages and warnings.\nUpdates the logging system complete with a vignette about how to use it, the logging system can be used for both R and C++ errors, warnings, and information.\nCreates the initial infrastructure to implement random effects with density functions.\nImplements a helper function to get the parameter names from the C++ code and populate the results with those names.\nMakes lpdf_vec return 0 if data is missing.\n\n\n\n\n\n\n\n\n\nThe future starts today!\n\n\n\n\n\n\n\n\n\n\nThe surplus production model (SPM) puts the S in FIMS where it really is a system. Users will be able to go from an age-structured assessment model to a surplus production model with very few changes. Imagine now having to switch frameworks to be able to run an SPM as a diagnostic.\n\n\n\nCatch-per-unit-effort data cannot currently be used with a fleet that has landings. The change will allow for one selectivity curve for a fleet with both types of data instead of needing to input two different fleets.\n\n\n\n\n\n\n\n\n\n\n\nCurrently, FIMS uses CppAD for auto differentiation. TMBad is newer and used by several frameworks that rely on TMB. The use of TMBad will allow users of RTMB to import FIMS functions such as the logistic maturity curve. For example, GMACS is being rewritten in TMB from ADMB and some of the FIMS functions could be helpful for the rewrite.\n\n\n\n\ndiscard mortality\nretention curves\ndata availability\n\n\n\n\n\n\n\n\n\n\n\n\n\n noaa-fims.github.io\n\n source code\n\n C++ documentation\n\n R documentation\n\n workflow\n\n case studies\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngitGraph:\n    commit id:\"2022-01-25\"\n    commit id:\"age-structured model\"\n    commit id:\"testing\"\n    commit id:\"FIMSFrame\"\n    commit id:\"2023-07-23\" tag:\"v0.1.0.0\"\n    commit id:\"fims::Vector\"\n    commit id:\"code coverage\"\n    commit id:\"logs\"\n    commit id:\"2023-12-23\" tag:\"v0.2.0.0\"\n    branch dev\n    checkout dev\n    commit id:\"FIMSFit\"\n    branch SPM\n    commit id:\"SPM\"\n    checkout dev\n    commit id:\"age-to-length\"\n    commit id:\"create_default_*()\"\n    checkout main\n    commit id:\"2025\"\n    merge dev\n    commit id:\"2025-01-02\" tag:\"v0.3.0.0\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\n\n\n\n\n\ngitGraph:\n    commit id:\"2023-12-23\" tag:\"v0.2.0.0\"\n    branch SPM\n    commit id:\"2025-10-01\"\n    branch CPUE\n    commit\n    checkout main\n    commit id:\"2025-01-02\" tag:\"v0.3.0.0\" type: HIGHLIGHT\n    branch dev\n    checkout dev\n    commit\n    branch TMBad\n    commit id:\"2025-02-01\"\n    checkout dev\n    merge TMBad\n    checkout dev\n    merge SPM id:\"2025-02-15\"\n    checkout CPUE\n    commit id:\"2025-03-01\"\n    checkout dev\n    merge CPUE\n    checkout main\n    merge dev\n    commit id:\"2025-03-15\" tag:\"v0.4.0.0\"\n    checkout dev\n    branch discards\n    commit id:\"2025-04-01\"\n    checkout dev\n    merge discards"
   },
   {
     "objectID": "posts/who-am-i/index.html#dr-nicola-rennie",
     "href": "posts/who-am-i/index.html#dr-nicola-rennie",
-    "title": "Who am I?",
+    "title": "FIMS Timeline?",
     "section": "",
     "text": "Lecturer in Health Data Science \nJoined CHICAS in April 2023, after working in data science consultancy and doing a PhD in Statistics and Operational Research."
   },
   {
     "objectID": "posts/who-am-i/index.html#nhs-data",
     "href": "posts/who-am-i/index.html#nhs-data",
-    "title": "Who am I?",
+    "title": "FIMS Timeline?",
     "section": "",
     "text": "Collaborating with local NHS Trusts \non data science and data engineering projects, making use of routinely collected healthcare data to improve health outcomes."
   },
   {
     "objectID": "posts/who-am-i/index.html#statistics",
     "href": "posts/who-am-i/index.html#statistics",
-    "title": "Who am I?",
+    "title": "FIMS Timeline?",
     "section": "",
     "text": "Promoting statistics as a tool for improvement \nby developing novel methodology to solve problems, working with local schools to encourage young people to choose careers in data, and researching more effective ways of teaching statistics."
   },
   {
     "objectID": "posts/who-am-i/index.html#research-software-engineering",
     "href": "posts/who-am-i/index.html#research-software-engineering",
-    "title": "Who am I?",
+    "title": "FIMS Timeline?",
     "section": "",
     "text": "Building and teaching open source software \nsuch as R and Python, to improve research reproducibility and building communities to develop skills, especially in under-represented groups."
   },
   {
     "objectID": "posts/who-am-i/index.html#data-visualisation",
     "href": "posts/who-am-i/index.html#data-visualisation",
-    "title": "Who am I?",
+    "title": "FIMS Timeline?",
     "section": "",
     "text": "Communicating data more effectively \nby developing Best Practices for Data Visualisation guidance for Royal Statistical Society publications, and helping authors to implement best practices."
   },
@@ -131,5 +131,96 @@
     "title": "English Monarchs and Marriages",
     "section": "",
     "text": "1917 - Present\nThe House of Windsor, established in 1917 by King George V, has been the reigning British royal family through major 20th and 21st-century events, including two World Wars."
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#diving-into-the-timeline-for-the-fisheries-integrated-modeling-system-fims-a-next-generation-framework-for-assessments",
+    "href": "posts/who-am-i/index.html#diving-into-the-timeline-for-the-fisheries-integrated-modeling-system-fims-a-next-generation-framework-for-assessments",
+    "title": "FIMS Timeline?",
+    "section": "",
+    "text": "Kelli F. Johnson (Office of Science & Technology)"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#fims-1",
+    "href": "posts/who-am-i/index.html#fims-1",
+    "title": "FIMS Timeline?",
+    "section": "",
+    "text": "Backbone of FIMS is C++ \n\nC++ stores the modules\nR is used to parameterize a model\nTMB Template Model Builder is used to fit data to a model\n{stats::nlminb()} is used to estimate the parameters\nR is used to post-processing the results"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#timeline",
+    "href": "posts/who-am-i/index.html#timeline",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "A timeline using git commits and tags."
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#timeline-1",
+    "href": "posts/who-am-i/index.html#timeline-1",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "The future starts today!"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#kelli-f.-johnson",
+    "href": "posts/who-am-i/index.html#kelli-f.-johnson",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "Project Lead of FIMS \nAs an assessment scientist at the Northwest Fisheries Science Center, I authored assessments for sablefish, lingcod, and Pacific Hake. At the core, I love reproducible research and anything related to making other people’s jobs easier. \nIn 2021 I was asked to be one of the NWFSC representatives for FIMS. And, in June of 2024 I started a detail as the FIMS Project Lead. I love it and I applied for the permanent position, which started in November of 2024. I, and many others, are committed to bringing the Science Centers together with a common framework."
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#framework",
+    "href": "posts/who-am-i/index.html#framework",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "Backbone of FIMS is C++ \n\nC++ is used to code the modules, e.g., struct LogisticMaturity : public\nR is used to parameterize a model, e.g., create_default_*(), initialize_*()\nTemplate Model Builder (TMB) is used to fit data to a model\nstats::nlminb() is used to estimate the parameters\nR is used to post-process the results, e.g., ggplot2::ggplot()"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#standing-on-the-shoulders-of-giants",
+    "href": "posts/who-am-i/index.html#standing-on-the-shoulders-of-giants",
+    "title": "FIMS Timeline?",
+    "section": "",
+    "text": "If I have seen further, it is by standing on the shoulders of giants. – Sir Isaac Newton"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#giants",
+    "href": "posts/who-am-i/index.html#giants",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "If I have seen further, it is by standing on the shoulders of giants.  – Sir Isaac Newton"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#past",
+    "href": "posts/who-am-i/index.html#past",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "The start of an age-structured assessment model began with version 0.1.0.0. Major milestones for this release included the following:\n\nC++ code to to build the necessary modules\nthe use of a single data frame to store all model data\nrigorous testing suite using google tests and {testthat}"
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#past-1",
+    "href": "posts/who-am-i/index.html#past-1",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "Created the fims::Vector class in C++. \nTesting and the amount of code that those tests cover is extremely important to the Implementation Team. Code coverage is formally calculated using a GitHub action and each commit is compared to the previous commit to ensure code coverage does not significantly drop."
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#past-2",
+    "href": "posts/who-am-i/index.html#past-2",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "The latest release (TODAY).\n\nFits to length data using an age-to-length-conversion matrix, data1 includes the necessary information needed to fit to both ages and lengths.\nAdds C++ ParameterVector to allow for the estimation of time-varying parameters.\nImplements R wrapper functions to facilitate\n\ncreating the input model specifications with create_default_*(), update_parameters(), and initialize_*();\nadding -999 to the missing fleet, year, age, length, etc. combinations;\nrunning the model with a user-supplied argument of n_of_loops, where the default is three, to restart the optimizer from the previous run of nlmimb;\nsummarizing the output with the FIMSFit() function and class.\n\nImplements a switch for global verbosity within FIMS through the use of {cli} messages and warnings.\nUpdates the logging system complete with a vignette about how to use it, the logging system can be used for both R and C++ errors, warnings, and information.\nCreates the initial infrastructure to implement random effects with density functions.\nImplements a helper function to get the parameter names from the C++ code and populate the results with those names.\nMakes lpdf_vec return 0 if data is missing."
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#timeline-2",
+    "href": "posts/who-am-i/index.html#timeline-2",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "The surplus production model (SPM) puts the S in FIMS where it really is a system. Users will be able to go from an age-structured assessment model to a surplus production model with very few changes. Imagine now having to switch frameworks to be able to run an SPM as a diagnostic.\n\n\n\nCatch-per-unit-effort data cannot currently be used with a fleet that has landings. The change will allow for one selectivity curve for a fleet with both types of data instead of needing to input two different fleets."
+  },
+  {
+    "objectID": "posts/who-am-i/index.html#timeline-3",
+    "href": "posts/who-am-i/index.html#timeline-3",
+    "title": "FIMS Timeline",
+    "section": "",
+    "text": "Currently, FIMS uses CppAD for auto differentiation. TMBad is newer and used by several frameworks that rely on TMB. The use of TMBad will allow users of RTMB to import FIMS functions such as the logistic maturity curve. For example, GMACS is being rewritten in TMB from ADMB and some of the FIMS functions could be helpful for the rewrite.\n\n\n\n\ndiscard mortality\nretention curves\ndata availability"
   }
 ]

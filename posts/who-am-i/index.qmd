@@ -1,8 +1,8 @@
 ---
-title: "Who am I?"
-description: "Showcasing the zoom features of Closeread to create slides for a lightning talk about research."
-author: Nicola Rennie
-date: "2024/10/22"
+title: "FIMS Timeline"
+description: "Past, present, and future milestones of FIMS."
+author: Kelli F. Johnson
+date: "2025/01/02"
 image: images/featured.png
 execute: 
   eval: true
@@ -11,9 +11,9 @@ execute:
 freeze: true
 format:
   closeread-html:
-    css: who-am-i.css
+    css: timeline.css
     cr-style:
-      narrative-background-color-sidebar: "#2F4F4F"
+      narrative-background-color-sidebar: "#00467F"
       narrative-text-color-sidebar: "#FFFFFF"
       section-background-color: "#FFFFFF"
       narrative-font-size: 14pt
@@ -24,75 +24,293 @@ format:
 ---
 :::{.cr-section}
 :::{focus-on="cr-open"}
-# What connects NHS data, statistics, research software engineering, and data visualisation?
+# FIMS
 
+### Diving into the timeline for the Fisheries Integrated Modeling System (FIMS), a next-generation framework for assessments
+
+Kelli F. Johnson<br>
+Office of Science & Technology<br><br><br><br>
+
+Within our team we have so much expertise in
+
+* Template Model Builder (TMB)
+* R
+* C++
+* git
+* GitHub actions
+* life history
+* fishery
+* statistics
+* Stan
+* Gaussian Markov random fields
+* economics
+* multi-species models
+
+It is amazing. For example, when I started with FIMS I did not know C++ at all. Now, I can at least pattern match. Additionally, I had never used Stan but others had. It is great to be on a team with so much knowledge.
 :::
 
 :::{#cr-open .scale-to-fill}
-
-![](images/main_init.png)
-
+![](images/main.png)
 :::
 
-:::{focus-on="cr-nicola"}
-## Dr Nicola Rennie
+:::{focus-on="cr-open" pan-to="100%,10%" scale-by="4.25"}
+## Kelli F. Johnson
 
-*Lecturer in Health Data Science* <br><br>
+*Project Lead of FIMS* <br><br>
 
-Joined CHICAS in April 2023, after working in data science consultancy and doing a PhD in Statistics and Operational Research.
+As an assessment scientist at the Northwest Fisheries Science Center, I authored assessments for sablefish, lingcod, and Pacific Hake. At the core, I love reproducible research and anything related to making other people's jobs easier. <br><br>
+
+In 2021 I was asked to be one of the NWFSC representatives for FIMS. And, in June of 2024 I started a detail as the FIMS Project Lead. I love it and I applied for the permanent position, which started in November of 2024. I, and many others, are committed to bringing the Science Centers together with a common framework.
+:::
+
+:::{focus-on="cr-open" pan-to="10%,-5%" scale-by="2.6"}
+## Framework
+
+*Backbone of FIMS is C++* <br><br>
+
+* **C++** is used to code the modules, e.g., `struct LogisticMaturity : public`
+* **R** is used to parameterize a model, e.g., `create_default_*()`, `initialize_*()`
+* **Template Model Builder (TMB)** is used to fit data to a model
+* `stats::nlminb()` is used to estimate the parameters
+* **R** is used to post-process the results, e.g., `ggplot2::ggplot()`
 :::
 
 :::{#cr-nicola .scale-to-fill}
 ![](images/main.png)
 :::
 
-:::{focus-on="cr-nicola" pan-to="62%,65%" scale-by="2.3"}
-## NHS Data
+:::{focus-on="cr-frameworks" scale-by="2.6"}
+## Giants
 
-*Collaborating with local NHS Trusts* <br><br>
-
-on data science and data engineering projects, making use of routinely collected healthcare data to improve health outcomes.
+*If I have seen further,<br>
+it is by standing on the shoulders of giants.*
+<br><br>
+-- Sir Isaac Newton
 :::
 
-:::{focus-on="cr-nicola" pan-to="-62%,65%" scale-by="2.3"}
-## Statistics
-
-*Promoting statistics as a tool for improvement* <br><br>
-
-by developing novel methodology to solve problems, working with local schools to encourage young people to choose careers in data, and researching more effective ways of teaching statistics.
+:::{#cr-frameworks}
+```{r}
+library(extrafont)
+# extrafont::font_import()
+# extrafont::loadfonts(device = "win")
+set.seed(16)
+frameworks <- c(
+  # Groundfish
+  "BAM", "ASAP", "WHAM", "Stock Synthesis", "AMAK", "GOA pollock",
+  # Other groundfish
+  "MAS", "SCALE", "MultifanCL",
+  # Surplus production
+  "JABBA",
+  # Data limited
+  "LIME", "DBSRA", "DCAC", "AIM", "MLE", "ADAPT", "VPA-2BOX", "ADMB",
+  # Size
+  "GMACS",
+  # Foreign
+  "Gadget", "Casal2", "SAM"
+)
+words_frameworks <- data.frame(
+  word = frameworks,
+  size = rep(c(1), length = length(frameworks)),
+  color = seq(frameworks)
+)
+ggplot2::ggplot(
+  words_frameworks,
+  ggplot2::aes(label = word, size = size, color = color)
+) +
+  ggwordcloud::geom_text_wordcloud(
+    family = "Lucida Handwriting",
+    shape = "circle"
+  ) +
+  ggplot2::scale_color_gradient(low = "#0093D0", high = "black") +
+  ggplot2::theme_minimal()
+```
 :::
 
-:::{focus-on="cr-nicola" pan-to="-62%,-65%" scale-by="2.3"}
-## Research Software Engineering
+:::{focus-on="cr-mermaid-past"}
+## Timeline
 
-*Building and teaching open source software* <br><br>
-
-such as R and Python, to improve research reproducibility and building communities to develop skills, especially in under-represented groups.
+A timeline using git commits and tags.
 :::
 
-:::{focus-on="cr-nicola" pan-to="62%,-65%" scale-by="2.3"}
-## Data visualisation
+:::{focus-on="cr-mermaid-past" pan-to="115%,37%" scale-by="3.25"}
+## Past
+### Version 0.1.0.0
 
-*Communicating data more effectively* <br><br>
+The start of an age-structured assessment model began with version 0.1.0.0. Major milestones for this release included the following:
 
-by developing *Best Practices for Data Visualisation* guidance for Royal Statistical Society publications, and helping authors to implement best practices.
+* C++ code to to build the necessary modules
+* the use of a single data frame to store all model data
+* rigorous testing suite using google tests and {testthat}
 :::
 
-:::{focus-on="cr-nicola"}
+:::{focus-on="cr-mermaid-past" pan-to="25%,37%" scale-by="3.25"}
+## Past
+### Version 0.2.0.0
+
+Created the fims::Vector class in C++. <br>
+
+Testing and the amount of code that those tests cover is extremely important to the Implementation Team. Code coverage is formally calculated using a GitHub action and each commit is compared to the previous commit to ensure code coverage does not significantly drop.
+:::
+
+:::{focus-on="cr-mermaid-past" pan-to="-55%,10%" scale-by="2.25"}
+## Past
+### Version 0.3.0.0
+
+The latest release (**TODAY**).
+
+* Fits to length data using an age-to-length-conversion matrix, `data1`
+  includes the necessary information needed to fit to both ages and lengths.
+* Adds C++ ParameterVector to allow for the estimation of time-varying
+  parameters.
+* Implements R wrapper functions to facilitate
+  * creating the input model specifications with `create_default_*()`,
+    `update_parameters()`, and `initialize_*()`;
+  * adding -999 to the missing fleet, year, age, length, etc. combinations;
+  * running the model with a user-supplied argument of n_of_loops, where the
+    default is three, to restart the optimizer from the previous run of nlmimb;
+  * summarizing the output with the `FIMSFit()` function and class.
+* Implements a switch for global verbosity within FIMS through the use
+  of {cli} messages and warnings.
+* Updates the logging system complete with a vignette about how to use it, the
+  logging system can be used for both R and C++ errors, warnings, and
+  information.
+* Creates the initial infrastructure to implement random effects with density
+  functions.
+* Implements a helper function to get the parameter names from the
+  C++ code and populate the results with those names.
+* Makes lpdf_vec return 0 if data is missing.
+:::
+
+:::{#cr-mermaid-past}
+```{mermaid}
+gitGraph:
+    commit id:"2022-01-25"
+    commit id:"age-structured model"
+    commit id:"testing"
+    commit id:"FIMSFrame"
+    commit id:"2023-07-23" tag:"v0.1.0.0"
+    commit id:"fims::Vector"
+    commit id:"code coverage"
+    commit id:"logs"
+    commit id:"2023-12-23" tag:"v0.2.0.0"
+    branch dev
+    checkout dev
+    commit id:"FIMSFit"
+    branch SPM
+    commit id:"SPM"
+    checkout dev
+    commit id:"age-to-length"
+    commit id:"create_default_*()"
+    checkout main
+    commit id:"2025"
+    merge dev
+    commit id:"2025-01-02" tag:"v0.3.0.0" type: HIGHLIGHT
+```
+:::
+
+:::{focus-on="cr-mermaid-future"}
+## Timeline
+### Future
+
+The future starts today!
+:::
+
+:::{focus-on="cr-mermaid-future" pan-to="50%,50%" scale-by="2.25"}
+## Timeline
+### Future
+
+#### SPM
+
+The surplus production model (SPM) puts the *S* in FIMS where it really is a system. Users will be able to go from an age-structured assessment model to a surplus production model with very few changes. Imagine now having to switch frameworks to be able to run an SPM as a diagnostic.
+
+#### CPUE
+
+Catch-per-unit-effort data cannot currently be used with a fleet that has landings. The change will allow for one selectivity curve for a fleet with both types of data instead of needing to input two different fleets.
+:::
+
+:::{focus-on="cr-mermaid-future" pan-to="0%,-50%" scale-by="1.01"}
+## Timeline
+### Future
+
+#### TMBad
+
+Currently, FIMS uses CppAD for auto differentiation. TMBad is newer and used by several frameworks that rely on TMB. The use of TMBad will allow users of RTMB to import FIMS functions such as the logistic maturity curve. For example, GMACS is being rewritten in TMB from ADMB and some of the FIMS functions could be helpful for the rewrite.
+
+#### Discards
+
+* discard mortality
+* retention curves
+* data availability
+:::
+
+:::{#cr-mermaid-future}
+```{mermaid}
+gitGraph:
+    commit id:"2023-12-23" tag:"v0.2.0.0"
+    branch SPM
+    commit id:"2025-10-01"
+    branch CPUE
+    commit
+    checkout main
+    commit id:"2025-01-02" tag:"v0.3.0.0" type: HIGHLIGHT
+    branch dev
+    checkout dev
+    commit
+    branch TMBad
+    commit id:"2025-02-01"
+    checkout dev
+    merge TMBad
+    checkout dev
+    merge SPM id:"2025-02-15"
+    checkout CPUE
+    commit id:"2025-03-01"
+    checkout dev
+    merge CPUE
+    checkout main
+    merge dev
+    commit id:"2025-03-15" tag:"v0.4.0.0"
+    checkout dev
+    branch discards
+    commit id:"2025-04-01"
+    checkout dev
+    merge discards
+```
+:::
+
+:::{focus-on="cr-mindmap"}
+## Giants
+
+:::
+
+:::{#cr-mindmap}
+[![](https://mermaid.ink/img/pako:eNplkTFuwzAMRa9icE4v4LEoAnTIlK3wQku0o1oiBUpK4Qa5e-UGqGP3T-L7JCGSNzBiCVoIjm3A2HFTdSy5KDXH99P5ARYFZBwpEOeVLVIaSIkNNVEc57R1o8onmeyEnwxFthIaGoZq7QpecabkkLc0z5F2iU-NvtBP_00sWZRGpZTclVY_uW966TGRbUId3u_6GsV-S7z0KZNuYTLovcRd8aTOezhAIA3obF3sbUnoIF_q6jpo69OiTh10fK95yx_PMxtosxY6gEoZL9AO6FONSrSY6c3hqBj-aET-EFljsq4Oenrc8fec9x82MYjn?type=png)](https://mermaid.live/edit#pako:eNplkTFuwzAMRa9icE4v4LEoAnTIlK3wQku0o1oiBUpK4Qa5e-UGqGP3T-L7JCGSNzBiCVoIjm3A2HFTdSy5KDXH99P5ARYFZBwpEOeVLVIaSIkNNVEc57R1o8onmeyEnwxFthIaGoZq7QpecabkkLc0z5F2iU-NvtBP_00sWZRGpZTclVY_uW966TGRbUId3u_6GsV-S7z0KZNuYTLovcRd8aTOezhAIA3obF3sbUnoIF_q6jpo69OiTh10fK95yx_PMxtosxY6gEoZL9AO6FONSrSY6c3hqBj-aET-EFljsq4Oenrc8fec9x82MYjn)
+:::
+
+:::{focus-on="cr-open"}
 
 <br>
 
-{{< fa globe >}} [nrennie.rbind.io](https://nrennie.rbind.io/)
+{{< fa globe >}} [noaa-fims.github.io](https://noaa-fims.github.io/)
 
 <br>
 
-{{< fa brands linkedin >}} [nicola-rennie](https://www.linkedin.com/in/nicola-rennie/)
+{{< fa brands github >}} [source code](https://github.com/NOAA-FIMS/FIMS)
 
 <br>
 
-{{< fa brands github >}} [nrennie](https://github.com/nrennie)
+{{< fa book >}} [C++ documentation](https://noaa-fims.github.io/FIMS-docs/)
 
+<br>
 
+{{< fa book >}} [R documentation](https://noaa-fims.github.io/FIMS/)
+
+<br>
+
+{{< fa brands github >}} [workflow](https://noaa-fims.github.io/collaborative_workflow/)
+
+<br>
+
+{{< fa brands github >}} [case studies](https://noaa-fims.github.io/case-studies/)
 :::
 
 :::
